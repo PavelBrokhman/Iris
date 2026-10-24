@@ -135,6 +135,52 @@ public class FfmpegToolsTests
     }
 
     [Fact]
+    public void Details_reads_size_rates_B_frames_and_bit_rate()
+    {
+        _runner.Lines = (_, _) => new[]
+        {
+            """{ "streams": [ { "codec_type": "video", "codec_name": "hevc", "profile": "Main", "width": 1280, "height": 720,""",
+            """ "has_b_frames": 2, "r_frame_rate": "90000/1", "avg_frame_rate": "2399/100", "duration": "180.0" },""",
+            """ { "codec_type": "audio", "codec_name": "aac" } ],""",
+            """ "format": { "duration": "180.1", "size": "118591003", "bit_rate": "5270000" } }""",
+        };
+
+        var d = Tools().Details("v.mp4");
+
+        Assert.Equal(new VideoDetails("v.mp4", S(180), 1280, 720, "hevc", "Main", 2, 90000, 23.99, 5_270_000, 118_591_003, "aac"), d);
+    }
+
+    [Fact]
+    public void KeyFrames_lists_the_key_packets()
+    {
+        _runner.Lines = (_, _) => new[] { "0.000000,K__", "0.041667,___", "2.500000,K__", "N/A,K__" };
+
+        Assert.Equal(new[] { S(0), S(2.5) }, Tools().KeyFrames("v.mp4", CancellationToken.None));
+    }
+
+    [Fact]
+    public void Repeats_counts_the_frames_in_and_those_kept()
+    {
+        _runner.Lines = (_, _) => new[]
+        {
+            "[Parsed_showinfo_0 @ 01] n:   0 pts:  0 pts_time:0    iskey:1",
+            "[Parsed_showinfo_0 @ 01] n:   1 pts:  1 pts_time:0.04 iskey:0",
+            "[Parsed_showinfo_0 @ 01] n:   2 pts:  2 pts_time:0.08 iskey:0",
+            "frame=1",
+            "frame=2",
+            "progress=end",
+            // ffmpeg's last summary on stderr, which may come after the progress on stdout
+            "frame=    2 fps=0.0 q=-0.0 Lsize=N/A time=00:00:00.08 bitrate=N/A speed=8.57x",
+        };
+
+        Assert.Equal((3L, 2L), Tools().Repeats("v.mp4", S(10), S(60), CancellationToken.None));
+        var args = Assert.Single(_runner.Calls).Args.ToList();
+        Assert.Equal("showinfo,mpdecimate", args[args.IndexOf("-vf") + 1]);
+        Assert.Equal("passthrough", args[args.IndexOf("-fps_mode") + 1]);
+        Assert.Equal("1", args[args.IndexOf("-max_error_rate") + 1]); // the piece may be all damage
+    }
+
+    [Fact]
     public void A_failing_ffmpeg_is_an_error_with_its_last_lines()
     {
         _runner.ExitCode = 1;

@@ -64,6 +64,83 @@ public sealed class FfmpegTools : IVideoTools
         return new MediaInfo(path, TimeSpan.FromSeconds(duration), rate, Rate(rate), Text(v, "codec_name"));
     }
 
+    public VideoDetails Details(string path)
+    {
+        var json = new StringBuilder();
+        Run("ffprobe", new[] { "-v", "error", "-show_streams", "-show_format", "-of", "json", path }, line => json.AppendLine(line), CancellationToken.None);
+
+        using var doc = JsonDocument.Parse(json.ToString());
+        JsonElement? video = null, audio = null;
+        foreach (var s in doc.RootElement.GetProperty("streams").EnumerateArray())
+        {
+            string type = Text(s, "codec_type") ?? "";
+            if (type == "video" && video is null) video = s;
+            if (type == "audio" && audio is null) audio = s;
+        }
+        if (video is not { } v) throw new InvalidOperationException("No video stream in " + path);
+        var format = doc.RootElement.TryGetProperty("format", out var f) ? f : (JsonElement?)null;
+
+        double duration = Number(Text(v, "duration"));
+        if (duration <= 0 && format is { } fd) duration = Number(Text(fd, "duration"));
+        long bitRate = (long)Number(Text(v, "bit_rate"));
+        if (bitRate <= 0 && format is { } fb) bitRate = (long)Number(Text(fb, "bit_rate"));
+
+        return new VideoDetails(path, TimeSpan.FromSeconds(duration), Int(v, "width"), Int(v, "height"),
+            Text(v, "codec_name"), Text(v, "profile"), Int(v, "has_b_frames"),
+            Rate(Text(v, "r_frame_rate") ?? "0"), Rate(Text(v, "avg_frame_rate") ?? "0"),
+            bitRate, format is { } fs ? (long)Number(Text(fs, "size")) : 0,
+            audio is { } a ? Text(a, "codec_name") : null);
+    }
+
+    public IReadOnlyList<TimeSpan> KeyFrames(string path, CancellationToken cancel)
+    {
+        var keys = new List<TimeSpan>();
+        Run("ffprobe", new[]
+        {
+            // only the packets are listed, nothing is decoded - quick even for hours
+            "-v", "quiet", "-select_streams", "v:0", "-show_entries", "packet=pts_time,flags", "-of", "csv=p=0", path,
+        }, line =>
+        {
+            var cells = line.Trim().Split(',');
+            if (cells.Length >= 2 && cells[1].Contains('K') && TryTime(cells[0], out var t)) keys.Add(t);
+        }, cancel);
+        keys.Sort();
+        return keys;
+    }
+
+    public (long Frames, long Distinct) Repeats(string path, TimeSpan from, TimeSpan length, CancellationToken cancel)
+    {
+        long frames = 0, kept = 0;
+        Run("ffmpeg", new[]
+        {
+            "-hide_banner", "-nostats", "-v", "info", "-progress", "pipe:1",
+            "-ss", Seconds(from), "-t", Seconds(length), "-i", path, "-map", "0:v:0",
+            // showinfo sees every frame, mpdecimate then drops a frame that repeats the one before; "frame=" counts what is left
+            "-vf", "showinfo,mpdecimate",
+            "-fps_mode", "passthrough", // else the null output would fill the dropped frames in again
+            "-max_error_rate", "1", // the piece may be all damage: by default ffmpeg gives up above 2/3 bad frames
+            "-f", "null", "-",
+        }, line =>
+        {
+            line = line.Trim();
+            // "frame=46" of the progress; ffmpeg's summary "frame=   46 fps=..." is not a number and is skipped
+            if (line.StartsWith("frame=", StringComparison.Ordinal))
+            {
+                if (long.TryParse(line["frame=".Length..], NumberStyles.Integer, CultureInfo.InvariantCulture, out long n)) kept = n;
+            }
+            else if (ShowinfoTime.IsMatch(line))
+                frames++;
+        }, cancel);
+        return (frames, kept);
+    }
+
+    public void Still(string path, TimeSpan at, string output, CancellationToken cancel) =>
+        Run("ffmpeg", new[]
+        {
+            "-hide_banner", "-v", "error", "-n", // -n: an existing picture is not overwritten, ffmpeg fails instead
+            "-ss", Seconds(at), "-i", path, "-frames:v", "1", output,
+        }, _ => { }, cancel);
+
     public DecodeLog Decode(string path, TimeSpan duration, IProgress<double>? progress, CancellationToken cancel)
     {
         var frames = new List<TimeSpan>();
@@ -193,8 +270,9 @@ public sealed class FfmpegTools : IVideoTools
         {
             line = line.Trim();
             if (Progress(line, info.Duration, progress)) return;
-            if (line.StartsWith("dup_frames=", StringComparison.Ordinal))
-                long.TryParse(line["dup_frames=".Length..], NumberStyles.Integer, CultureInfo.InvariantCulture, out duplicated);
+            if (line.StartsWith("dup_frames=", StringComparison.Ordinal)
+                && long.TryParse(line["dup_frames=".Length..], NumberStyles.Integer, CultureInfo.InvariantCulture, out long n))
+                duplicated = n;
         }, cancel);
         return duplicated;
     }
@@ -228,6 +306,9 @@ public sealed class FfmpegTools : IVideoTools
 
     private static string? Text(JsonElement e, string name) =>
         e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString() : null;
+
+    private static int Int(JsonElement e, string name) =>
+        e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.Number && v.TryGetInt32(out int i) ? i : 0;
 
     private static double Number(string? s) =>
         double.TryParse(s, NumberStyles.Float, CultureInfo.InvariantCulture, out double d) ? d : 0;

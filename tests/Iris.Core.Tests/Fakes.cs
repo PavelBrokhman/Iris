@@ -13,7 +13,25 @@ internal sealed class FakeTools : IVideoTools
     public List<(IReadOnlyList<string> Parts, string Output)> Joins { get; } = new();
     public List<(string Output, string Encoder, string FrameRate)> Encodes { get; } = new();
 
+    public Dictionary<string, VideoDetails> AllDetails { get; } = new();
+    public Dictionary<string, IReadOnlyList<TimeSpan>> Keys { get; } = new();
+    public Dictionary<string, (long Frames, long Distinct)> Samples { get; } = new();
+    public List<(string Path, TimeSpan From, TimeSpan Length)> SampleCalls { get; } = new();
+    public List<(string Path, TimeSpan At, string Output)> Stills { get; } = new();
+
     public MediaInfo Probe(string path) => Infos[path];
+
+    public VideoDetails Details(string path) => AllDetails[path];
+
+    public IReadOnlyList<TimeSpan> KeyFrames(string path, CancellationToken cancel) => Keys[path];
+
+    public (long Frames, long Distinct) Repeats(string path, TimeSpan from, TimeSpan length, CancellationToken cancel)
+    {
+        SampleCalls.Add((path, from, length));
+        return Samples[path];
+    }
+
+    public void Still(string path, TimeSpan at, string output, CancellationToken cancel) => Stills.Add((path, at, output));
 
     public DecodeLog Decode(string path, TimeSpan duration, IProgress<double>? progress, CancellationToken cancel) => Log;
 
