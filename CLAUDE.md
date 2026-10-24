@@ -33,7 +33,8 @@ Paths are last-known (2026-10-16); check before relying on them.
 - **Also read, from Claude Hub, at the start:** Pavel's preferences
   (`D:\Projects\claude-hub\Bootstraps\max-mode\user-profile.md`), the Jira way of working
   (`D:\Projects\claude-hub\shared\jira\README.md`) and where working files go
-  (`D:\Projects\claude-hub\Bootstraps\max-mode\sandbox-shared.md` - never the session scratchpad).
+  (`D:\Projects\claude-hub\Bootstraps\max-mode\sandbox-shared.md` - never the session scratchpad)
+  and the pitfalls of this machine (`D:\Projects\claude-hub\Bootstraps\max-mode\tooling-notes.md`).
   They live in the hub because they hold for every project; without a bootstrap nothing loads
   them here. This folder's memory keeps only what is about Iris.
 - **Before working on a project, read its own `CLAUDE.md`** (Mosaic Remover has one since
