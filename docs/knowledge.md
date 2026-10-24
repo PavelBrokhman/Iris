@@ -19,6 +19,9 @@ what belongs to one project stays in that project.
 - **A video can report a frame rate of 90000** (`r_frame_rate` of a variable-frame-rate file,
   `ProdalDoch.mp4`, really ~24). Tools that trust it show nonsense; `avg_frame_rate` is right.
   (Mosaic Remover / Lada, 2026-10-14)
+  Lada waits for reported rate × 15 frames before it shows Remaining and Speed, so only a file with
+  fewer frames than that keeps "?" to the end: `damaged-timestamps.mp4` reports 59.94 (really 29.45)
+  and is fine. (Iris `diagnose`, 2026-10-24, from the samples' README)
 
 ## Damaged files
 
@@ -28,6 +31,16 @@ what belongs to one project stays in that project.
   damaged-h264-no-frames.mp4`. (Mosaic Remover, 2026-10-14)
 - **Damaged sound stops ffmpeg 8.1.1 half way** (exit -22), so a check decodes the picture only.
   (Mosaic Remover, 2026-10-14)
+- **The decoder can go silent.** A second of complaints, a few more frames, then no frame and no word
+  for minutes (`damaged-h264-nal-short.mp4`: complaints 01:00 - 01:01, no frames to 04:07). Damage is
+  found by the holes in the frame times, not by the complaints alone. (Iris `check`, 2026-10-24)
+- **Not every ffmpeg error is about the file.** With `-f null` the output complains *non monotonically
+  increasing dts to muxer* where frames share a time (`damaged-timestamps.mp4`,
+  `vfr-frame-rate-90000.mp4`); the decoder is silent, nothing is missing. (Iris `check`, 2026-10-24)
+- **After a seek into a hole ffmpeg gives frames.** Decoded from the start, `damaged-h264-no-frames.mp4`
+  gives none from 02:09 to 04:45; started at 03:30 with `-ss`, it gives 24 frames/s there. What those
+  frames show was not looked at. A measure taken on a piece of a file does not see damage.
+  (Iris `compare`, 2026-10-24)
 
 ## Cutting and joining
 

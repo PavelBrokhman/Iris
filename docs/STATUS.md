@@ -16,6 +16,13 @@ themselves are in Jira; the decisions with their reasons in [decisions/](decisio
   (`damaged-h264-nal-short.mp4`: 01:00 - 04:07, was 01:00 - 01:01); complaints of ffmpeg's null output
   are not damage (`damaged-timestamps.mp4`, `vfr-frame-rate-90000.mp4`: none, were 3 and 2 places).
   Build: `dotnet build Iris.sln`; tests: `dotnet test Iris.sln`.
+- `iris diagnose` and `iris compare` (`IRIS-12`, 2026-10-24). diagnose: the file's facts - codec,
+  B-frames, key frame interval, the reported against the real frame rate - each with what it means
+  for Explorer, VLC and Lada, "not checked" where nothing was seen. compare: length, picture, real
+  frames/s (a minute from the middle with repeats dropped), bit rate, which is better on the numbers;
+  `--stills` writes frames of both from the same moments for Pavel. 55 tests. Checked live on the
+  samples and on `Doch'.mp4` against its `.demosaic` (HEVC, 2 B-frames, a key frame every 2 s - as
+  knowledge.md says of Lada's results); four problems found that way, each a test first.
 
 - `scripts/jira.py` (`IRIS-7`, 2026-10-24) - Jira from the command line, on Milo's pattern, over
   Claude Hub's shared client: IRIS by default, `--project` for the other spaces, a subtask always in
