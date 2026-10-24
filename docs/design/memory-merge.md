@@ -1,6 +1,9 @@
 # Merging the Claude memory of the video projects - a draft
 
-`IRIS-9`, 2026-10-24. A proposal for Pavel, not done yet.
+`IRIS-9`, 2026-10-24. A proposal for Pavel, kept as written. **The outcome is in `IRIS-9`:** what
+this draft calls "the top level" went to Claude Hub (`Bootstraps/max-mode/user-profile.md`,
+`tooling-notes.md`, `shared/jira/README.md`), not to Iris's memory - preferences hold for every
+project, and a project's memory is kept as small as possible.
 
 On 2026-10-24 the memory of Mosaic Remover, VideoToSRT and VLC Playlists was copied as it was into
 Iris's memory, a folder per project (Pavel: copy as is, decide later, then merge). The originals
