@@ -104,7 +104,7 @@ choice - and the Gateway's paths only mean something while both sides see the sa
   the answer. Through AI Gateway - the local model (Qwen on the 8 GB card) for ordinary cases,
   a cloud model for hard ones. Whatever has no rule behind it is passed on honestly, not guessed.
 - **Its notes are its memory**: Pavel's folders, the decisions taken (such as the `.demosaic`
-  copy of subtitles), what was found before - [knowledge.md](knowledge.md).
+  copy of subtitles), what was found before - [knowledge.md](../knowledge.md).
 - **What exists already**: Mosaic Remover's core (`Ffmpeg.Probe`, running external programs
   through `IExternalTool`) and its draft `MosaicRemover.Check` - `check` and `repair cut|freeze`
   with interfaces and a factory, tried on one damaged file only. Its recipe part (where the hole

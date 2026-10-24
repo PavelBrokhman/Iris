@@ -9,7 +9,7 @@ Two things in one place (decided by Pavel, 2026-10-16):
    they are, each with its own git and its own `docs/status.md`; work on them by absolute path.
 2. **Iris, the video agent** - Pavel's own specialist for problems with video files (is it whole,
    which version is better, why does it stutter, cut it, fix it, match the subtitles), so that he
-   does not have to come to Claude every time. What it does: [docs/spec.md](docs/spec.md).
+   does not have to come to Claude every time. What it does: [docs/architecture/spec.md](docs/architecture/spec.md).
 
 ## The projects under the umbrella
 
@@ -18,7 +18,7 @@ Two things in one place (decided by Pavel, 2026-10-16):
 | Mosaic Remover | `D:\Projects\Video Mosaic Censor Remover\` | https://github.com/PavelBrokhman/Mosaic-Remover.git | `docs/status.md` |
 | VideoToSRT | `D:\Projects\VideoToSRT\` | https://github.com/PavelBrokhman/VideoToSRT.git | `docs/` (see its README) |
 | VLC Playlists | `D:\Projects\VLC Playlists\` | none - local git only | `docs/ROADMAP.md` |
-| Iris | `D:\Projects\Iris\` (here) | none yet - local git only | [docs/status.md](docs/status.md) |
+| Iris | `D:\Projects\Iris\` (here) | none yet - local git only | [docs/STATUS.md](docs/STATUS.md) |
 
 Also used by them: AI Gateway (`D:\Projects\AI-Gateway\`, model access) and Claude Hub
 (`D:\Projects\claude-hub\` - Pavel's own notes and preferences).
