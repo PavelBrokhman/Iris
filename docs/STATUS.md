@@ -7,7 +7,15 @@ themselves are in Jira; the decisions with their reasons in [decisions/](decisio
 
 ## Built and checked
 
-Nothing of the agent yet.
+- `iris check` and `iris repair cut|freeze` (`IRIS-11`, 2026-10-24) - the first recipes, moved from
+  Mosaic Remover's `Diagnostic` ([decisions/check-recipes.md](decisions/check-recipes.md)): `Iris.Core`
+  (recipes, ffmpeg behind `IVideoTools`), `Iris.Cli` (`iris.exe`), 30 tests. Checked live on the six
+  samples of `D:\Projects\lada\samples\`: the places found match their README; cut gives a file a
+  second check finds whole, freeze (NVENC) too. Two problems of Mosaic Remover's check fixed on the
+  way (`MOSAIC-19`): a silent hole in the frames after a few complaints is part of the damaged place
+  (`damaged-h264-nal-short.mp4`: 01:00 - 04:07, was 01:00 - 01:01); complaints of ffmpeg's null output
+  are not damage (`damaged-timestamps.mp4`, `vfr-frame-rate-90000.mp4`: none, were 3 and 2 places).
+  Build: `dotnet build Iris.sln`; tests: `dotnet test Iris.sln`.
 
 - `scripts/jira.py` (`IRIS-7`, 2026-10-24) - Jira from the command line, on Milo's pattern, over
   Claude Hub's shared client: IRIS by default, `--project` for the other spaces, a subtask always in

@@ -13,4 +13,7 @@ place, which subtitles fit. Most of the work is ordinary code around ffmpeg; a l
 - Where it stands: [docs/STATUS.md](docs/STATUS.md)
 - Decisions and their reasons: [docs/decisions/](docs/decisions/README.md)
 
-Not built yet - documents only (2026-10-16).
+Built so far (2026-10-24): `iris check <video>` - is it whole, where is it damaged, which repair
+suits; `iris repair cut|freeze <video>` - a repaired copy next to it. `dotnet build Iris.sln`, then
+`src\Iris.Cliin\Debug
+et8.0\iris.exe`; ffmpeg on the PATH or `--ffmpeg <folder>`.

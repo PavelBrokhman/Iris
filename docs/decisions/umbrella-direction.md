@@ -11,5 +11,7 @@ Remover with its own ffmpeg. Each project's pieces are its backlog in Jira ([jir
 `/detect-silence`, `/extract-frames`, `/grab-frame` - made for VideoToSRT). For Iris `/probe` says
 too little and replaces an unknown fps with 25, and there is nothing for `check` / `cut` / `freeze`.
 
-**Not decided:** while the Gateway lacks a command, may Iris run ffmpeg itself for a while
-(`IRIS-11`)?
+**Iris runs ffmpeg itself while the Gateway lacks a command** - decided 2026-10-24 (Pavel: "delaj
+vsjo - vkljuchaya ffmpeg"), for `IRIS-11` and the stories after it. Every run of ffmpeg sits behind
+one interface (`IVideoTools`), so when the Gateway gets the command only that class changes - the
+recipes do not. Until 2026-10-24 this was an open question here.

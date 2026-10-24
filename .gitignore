@@ -16,3 +16,7 @@ samples/
 venv/
 __pycache__/
 .pytest_cache/
+
+# Iris writes the pieces of a repair here
+work/
+TestResults/
