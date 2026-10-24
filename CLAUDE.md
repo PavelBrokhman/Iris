@@ -30,13 +30,6 @@ Paths are last-known (2026-10-16); check before relying on them.
 - **At the start of a session read [docs/STATUS.md](docs/STATUS.md)** - what is built and where the
   work is. No bootstrap questions: the Gateway is always in, the scratch routing always on
   ([decisions/session-start.md](docs/decisions/session-start.md)).
-- **Also read, from Claude Hub, at the start:** Pavel's preferences
-  (`D:\Projects\claude-hub\Bootstraps\max-mode\user-profile.md`), the Jira way of working
-  (`D:\Projects\claude-hub\shared\jira\README.md`) and where working files go
-  (`D:\Projects\claude-hub\Bootstraps\max-mode\sandbox-shared.md` - never the session scratchpad)
-  and the pitfalls of this machine (`D:\Projects\claude-hub\Bootstraps\max-mode\tooling-notes.md`).
-  They live in the hub because they hold for every project; without a bootstrap nothing loads
-  them here. This folder's memory keeps only what is about Iris.
 - **Before working on a project, read its own `CLAUDE.md`** (Mosaic Remover has one since
   2026-10-24, with its working rules and their reasons). A session started here does not load it by
   itself - only the `CLAUDE.md` of this folder is read at the start.
