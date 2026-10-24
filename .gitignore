@@ -1,0 +1,13 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+
+# Videos and samples are large and private
+*.mp4
+*.mkv
+samples/
