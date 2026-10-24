@@ -65,7 +65,7 @@ until their piece is rebuilt.
   `design/`, `guides/`, `archive/` as needed - a folder appears with its first file.
 - **Scratch and samples** ([scratch-and-samples.md](docs/decisions/scratch-and-samples.md)):
   scratch, PoCs and tools through Claude Hub's `tmp/<project>/`, `sandbox/`, `shared/`, not the
-  Windows temp folder; video samples never in a git - `D:\Video Samples\`, a folder per case.
+  Windows temp folder; video samples never in a git - `D:\Projects\Video Samples\`, a folder per case.
 - **Tests** ([tests.md](docs/decisions/tests.md)): written first and seen failing, committed with
   the code, measuring scripts too. Where that does not fit, the story says beforehand what checks
   the piece instead.
