@@ -11,3 +11,8 @@ obj/
 *.mp4
 *.mkv
 samples/
+
+# Python
+venv/
+__pycache__/
+.pytest_cache/

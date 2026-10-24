@@ -58,7 +58,8 @@ until their piece is rebuilt.
   an epic per theme, a story per piece, its steps as subtasks. In Progress while Claude works or its
   branch is open, In Review while it waits for Pavel, Done when decided. A dependency is a "Request
   to X" subtask, a story in X's space, and a `blocks` link. Credentials in
-  `D:\Projects\claude-hub\.env.iris`, never in the chat.
+  `D:\Projects\claude-hub\.env.iris`, never in the chat. The tool: `venv\Scripts\python
+  scripts\jira.py` (`--project` for a space other than `IRIS`; `link A B` = A blocks B).
 - **Where things are written** ([docs-layout.md](docs/decisions/docs-layout.md)): tasks in Jira;
   `docs/STATUS.md` when a branch lands; a decision per file in `docs/decisions/`; `architecture/`,
   `design/`, `guides/`, `archive/` as needed - a folder appears with its first file.
