@@ -16,3 +16,6 @@ samples/
 venv/
 __pycache__/
 .pytest_cache/
+
+# Jira credentials of this project - never in git
+.env

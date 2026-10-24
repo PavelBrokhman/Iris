@@ -9,8 +9,8 @@ every project, not only for Iris.
 What is Iris's own:
 
 - **The space `IRIS`** on https://pavlogix.atlassian.net, epics *Way of working* and *Agent*.
-- **The credentials:** `D:\Projects\claude-hub\.env.iris` (gitignored - the hub's `.gitignore`
-  keeps every `.env.*` out since 2026-10-24): `JIRA_PROJECT_KEY` (the URL of a space),
-  `JIRA_EMAIL`, `JIRA_API_KEY`. Never into the chat.
+- **The credentials:** `D:\Projects\Iris\.env`, gitignored: `JIRA_PROJECT_KEY` (the URL of a
+  space), `JIRA_EMAIL`, `JIRA_API_KEY`. Never into the chat. Each project keeps its own keys
+  (Pavel, 2026-10-24); until then the file was `D:\Projects\claude-hub\.env.iris`.
 - **The tool:** `scripts/jira.py` (`IRIS-7`) - `IRIS` by default, `--project` for the other spaces
   of the umbrella, `link A B` = A blocks B. Run it with `python -X utf8` when an item has Cyrillic.

@@ -1,7 +1,7 @@
 """
 Iris Jira wrapper - thin layer over claude-hub/shared/jira/jira_client.py (Milo's pattern).
 
-Credentials from claude-hub/.env.iris (JIRA_PROJECT_KEY, JIRA_EMAIL, JIRA_API_KEY).
+Credentials from Iris's own .env, gitignored (JIRA_PROJECT_KEY, JIRA_EMAIL, JIRA_API_KEY).
 The space is IRIS unless --project names another space of the umbrella
 (MOSAIC, VIDEOTOSRT, GATEWAY, HUB). A subtask always goes to the space of its parent.
 
@@ -28,7 +28,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # The shared client reads the environment when it is imported, so the file is loaded first.
-_ENV_FILE = Path(__file__).resolve().parents[2] / "claude-hub" / ".env.iris"
+_ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(_ENV_FILE, override=True)
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "claude-hub"))
 
