@@ -30,6 +30,12 @@ Paths are last-known (2026-10-16); check before relying on them.
 - **At the start of a session read [docs/STATUS.md](docs/STATUS.md)** - what is built and where the
   work is. No bootstrap questions: the Gateway is always in, the scratch routing always on
   ([decisions/session-start.md](docs/decisions/session-start.md)).
+- **Also read, from Claude Hub, at the start:** Pavel's preferences
+  (`D:\Projects\claude-hub\Bootstraps\max-mode\user-profile.md`), the Jira way of working
+  (`D:\Projects\claude-hub\shared\jira\README.md`) and where working files go
+  (`D:\Projects\claude-hub\Bootstraps\max-mode\sandbox-shared.md` - never the session scratchpad).
+  They live in the hub because they hold for every project; without a bootstrap nothing loads
+  them here. This folder's memory keeps only what is about Iris.
 - **Before working on a project, read its own `CLAUDE.md`** (Mosaic Remover has one since
   2026-10-24, with its working rules and their reasons). A session started here does not load it by
   itself - only the `CLAUDE.md` of this folder is read at the start.
@@ -54,10 +60,9 @@ until their piece is rebuilt.
 - **Direction** ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Claude Hub's
   shape - tools through AI Gateway, data through AI Ecosystem, the UI apart from the core - one piece
   at a time, each checked before the next; meanwhile every project keeps working as it is.
-- **Jira** ([jira.md](docs/decisions/jira.md)): https://pavlogix.atlassian.net, a space per project,
-  an epic per theme, a story per piece, its steps as subtasks. In Progress while Claude works or its
-  branch is open, In Review while it waits for Pavel, Done when decided. A dependency is a "Request
-  to X" subtask, a story in X's space, and a `blocks` link. Credentials in
+- **Jira** ([jira.md](docs/decisions/jira.md), the rules in Claude Hub's `shared/jira/README.md`):
+  https://pavlogix.atlassian.net, a space per project, an epic per theme, a story per piece, its
+  steps as subtasks; items impersonal, Russian when assigned to Pavel, with instructions. Credentials in
   `D:\Projects\claude-hub\.env.iris`, never in the chat. The tool: `venv\Scripts\python
   scripts\jira.py` (`--project` for a space other than `IRIS`; `link A B` = A blocks B).
 - **Where things are written** ([docs-layout.md](docs/decisions/docs-layout.md)): tasks in Jira;
