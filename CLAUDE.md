@@ -35,9 +35,10 @@ Paths are last-known (2026-10-16); check before relying on them.
   itself - only the `CLAUDE.md` of this folder is read at the start.
 - **A decision about one project goes into that project** (its `status.md` / docs, its git).
   Only what concerns more than one of them, or video in general, goes here.
-- **Commit in the repository the change belongs to.** Each project has its own branch habits: look
-  at `git branch` there before cutting a branch. The name of the main branch does not matter to
-  Pavel - it is only a passing point.
+- **Commit in the repository the change belongs to,** with the same branch rule everywhere (below);
+  look at `git branch` there first - a project that has no `DEV`, `QA`, `PROD` yet gets them from its
+  main branch, with Pavel's word. The name of the main branch does not matter to Pavel - it is only a
+  passing point.
 - What is known about video in general - codecs, players, key frames, damaged files, subtitles -
   is in [docs/knowledge.md](docs/knowledge.md), with the project and date it came from.
 
