@@ -44,8 +44,9 @@ Paths are last-known (2026-10-16); check before relying on them.
 ## The rules decided on 2026-10-24
 
 Each in one line here; the reason and the history are in its file under
-[docs/decisions/](docs/decisions/README.md). Iris follows them; the other projects keep their own
-until their piece is rebuilt.
+[docs/decisions/](docs/decisions/README.md). They hold for every project under the umbrella - that is
+why the video projects were put under Iris (Pavel, 2026-10-25: "chtoby bylo consistence"); a project's
+own `CLAUDE.md` follows them.
 
 - **Branches** ([branches.md](docs/decisions/branches.md)): `DEV`, `QA`, `PROD` are teams; a child
   is named by the kind of work - `feature/`, `userstory/`, `docs/` from `DEV`; `test/`,
