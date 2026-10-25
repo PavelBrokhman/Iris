@@ -10,6 +10,9 @@ Two things in one place (decided by Pavel, 2026-10-16):
 2. **Iris, the video agent** - Pavel's own specialist for problems with video files (is it whole,
    which version is better, why does it stutter, cut it, fix it, match the subtitles), so that he
    does not have to come to Claude every time. What it does: [docs/architecture/spec.md](docs/architecture/spec.md).
+   It is the **agent** of three parts - the UI shows, the tool's backend processes, the agent talks
+   (Pavel, 2026-10-24): Iris calls the tools, knows them by the schema the user gives it, keeps that
+   and the user's preferences in AI Ecosystem - and does not do the tools' work itself.
 
 ## The projects under the umbrella
 
