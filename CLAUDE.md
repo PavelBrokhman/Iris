@@ -56,7 +56,8 @@ until their piece is rebuilt.
   at a time, each checked before the next; meanwhile every project keeps working as it is.
 - **Jira** ([jira.md](docs/decisions/jira.md), the rules in Claude Hub's `shared/jira/README.md`):
   https://pavlogix.atlassian.net, a space per project, an epic per theme, a story per piece, its
-  steps as subtasks; items impersonal, Russian when assigned to Pavel, with instructions. Credentials in
+  steps as subtasks; items impersonal, with instructions, written in `JIRA_LANG_LOCALE`; Iris's own
+  Jira user is `JIRA_AGENT` (IRISAGENT) - In Review hands an item to Pavel. Both and the credentials in
   Iris's own `.env` (gitignored), never in the chat. The tool: `venv\Scripts\python
   scripts\jira.py` (`--project` for a space other than `IRIS`; `link A B` = A blocks B).
 - **Where things are written** ([docs-layout.md](docs/decisions/docs-layout.md)): tasks in Jira;
