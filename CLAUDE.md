@@ -45,33 +45,35 @@ Paths are last-known (2026-10-16); check before relying on them.
 ## The rules decided on 2026-10-24
 
 Each in one line here; the reason and the history are in its file under
-[docs/decisions/](docs/decisions/README.md). They hold for every project under the umbrella - that is
-why the video projects were put under Iris (Pavel, 2026-10-25: "chtoby bylo consistence"); a project's
-own `CLAUDE.md` follows them.
+[docs/decisions/](docs/decisions/README.md). Two kinds (Pavel, 2026-10-25):
 
-- **Branches** ([branches.md](docs/decisions/branches.md)): `DEV`, `QA`, `PROD` are teams; a child
+- **cross** - the same in every project under the umbrella; that is why the video projects were put
+  under Iris ("chtoby bylo consistence"), and a project's own `CLAUDE.md` follows them;
+- **project** - Iris's own; another project may keep its own rule instead.
+
+- **Branches**, cross ([branches.md](docs/decisions/branches.md)): `DEV`, `QA`, `PROD` are teams; a child
   is named by the kind of work - `feature/`, `userstory/`, `docs/` from `DEV`; `test/`,
   `loadstress/` from `QA`; `release/`, `patch/` from `PROD`. Fast-forward only, `start/` and `end/`
   tags, verify in the child before landing. Commit and push only when Pavel says so.
-- **Direction** ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Claude Hub's
+- **Direction**, cross ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Claude Hub's
   shape - tools through AI Gateway, data through AI Ecosystem, the UI apart from the core - one piece
   at a time, each checked before the next; meanwhile every project keeps working as it is.
-- **Jira** ([jira.md](docs/decisions/jira.md), the rules in Claude Hub's `shared/jira/README.md`):
+- **Jira**, cross ([jira.md](docs/decisions/jira.md), the rules in Claude Hub's `shared/jira/README.md`):
   https://pavlogix.atlassian.net, a space per project, an epic per theme, a story per piece, its
   steps as subtasks; items impersonal, with instructions, in `JIRA_LANG_LOCALE_USER` when on Pavel, `JIRA_LANG_LOCALE_AGENT` when on the agent; Iris's own
   Jira user is `JIRA_AGENT` (IRISAGENT) - In Review hands an item to Pavel. Both and the credentials in
   Iris's own `.env` (gitignored), never in the chat. The tool: `venv\Scripts\python
   scripts\jira.py` (`--project` for a space other than `IRIS`; `link A B` = A blocks B).
-- **Where things are written** ([docs-layout.md](docs/decisions/docs-layout.md)): tasks in Jira;
+- **Where things are written**, project ([docs-layout.md](docs/decisions/docs-layout.md)): tasks in Jira;
   `docs/STATUS.md` when a branch lands; a decision per file in `docs/decisions/`; `architecture/`,
   `design/`, `guides/`, `archive/` as needed - a folder appears with its first file.
-- **Scratch and samples** ([scratch-and-samples.md](docs/decisions/scratch-and-samples.md)):
+- **Scratch and samples**, cross ([scratch-and-samples.md](docs/decisions/scratch-and-samples.md)):
   scratch, PoCs and tools through Claude Hub's `tmp/<project>/`, `sandbox/`, `shared/`, not the
   Windows temp folder; video samples never in a git - `D:\Projects\Video Samples\`, a folder per case.
-- **Tests** ([tests.md](docs/decisions/tests.md)): written first and seen failing, committed with
+- **Tests**, project ([tests.md](docs/decisions/tests.md)): written first and seen failing, committed with
   the code, measuring scripts too. Where that does not fit, the story says beforehand what checks
   the piece instead.
-- **Code** ([rules-of-code.md](docs/decisions/rules-of-code.md)): every dependency behind an
+- **Code**, project ([rules-of-code.md](docs/decisions/rules-of-code.md)): every dependency behind an
   interface from day one, instance classes; a number with a meaning is a named constant, a setting
   only when someone will change it; no widening of scope; comments only for a non-obvious why; keep
   CRLF; never rewrite a source file through PowerShell without `-Encoding`.
