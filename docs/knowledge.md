@@ -24,7 +24,7 @@ what belongs to one project stays in that project.
 
 - **No frame decodes for minutes** (`Nevestka4.mp4`, ~2:23:09-2:26): Lada gives up after 10 bad
   frames in a row, prints "Error on export" and still ends with exit code 0, writing nothing. A
-  whole copy of the film from another source replaced it. Sample: `D:\Projects\Video Samples\
+  whole copy of the film from another source replaced it. Sample: `D:\Projects-Shared\Video\Samples\
   damaged-h264-no-frames\`. (Mosaic Remover, 2026-10-14)
 - **Damaged sound stops ffmpeg 8.1.1 half way** (exit -22), so a check decodes the picture only.
   (Mosaic Remover, 2026-10-14)
