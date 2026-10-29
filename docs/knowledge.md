@@ -7,7 +7,8 @@ what belongs to one project stays in that project.
 ## Players and seeking
 
 - **Explorer thumbnails come from a key frame.** A video with a key frame only every ~8-10 s gets a
-  blank thumbnail (the very first frame); one every 2 s gets a picture. The codec does not matter.
+  blank thumbnail (the very first frame); one every 2 s gets a picture. The codec does not matter for codecs Windows decodes (H.264, HEVC); one it cannot decode at
+  all (AV1 without the extension) gives no thumbnail whatever the key frames - see Codecs.
   *Checked by Pavel, 2026-10-12* (Mosaic Remover, `samples\thumb-test`). Mosaic Remover now writes a
   key frame at least every 2 s / 60 frames.
 - **VLC stutters at 4x and on ← / → with Lada's results** (`Negr.demosaic.mp4`: HEVC Main, 2
@@ -19,6 +20,25 @@ what belongs to one project stays in that project.
 - **A video can report a frame rate of 90000** (`r_frame_rate` of a variable-frame-rate file,
   `ProdalDoch.mp4`, really ~24). Tools that trust it show nonsense; `avg_frame_rate` is right.
   (Mosaic Remover / Lada, 2026-10-14)
+
+## Codecs
+
+- **YouTube keeps several codecs for one video:** H.264 (up to 1080p), VP9 and AV1; which exist
+  depends on the video. yt-dlp's "best" took AV1 (1080x1920 + Opus): Explorer showed no thumbnail
+  (VLC's icon), VLC plays it; the same kind of Shorts from UDL were VP9 and had thumbnails. Likely
+  cause: Explorer cannot decode AV1 without the "AV1 Video Extension" from the Microsoft Store.
+  **Not checked** - the extension was not installed to see. It is not the key frames: the AV1 file
+  had 59 in its first 120 s (0.3-3.9 s apart), the VP9 file 57, the H.264 file 20 (6 s apart).
+  (Video Downloader, 2026-10-27)
+- **Why YouTube uses AV1:** the same quality in fewer bytes - typically 20-30% less than VP9 and about
+  half of H.264 (general estimates, not measured on our files); no licence fees; slow to encode but it
+  is encoded once and watched many times; heavier to decode - hardware decoding only on newer cards
+  (about 2020-21 and later: NVIDIA RTX 30 and newer, Intel 11th generation and newer, AMD RX 6000 and
+  newer), otherwise the processor does it.
+- **For a file kept for work - watching, cutting, Lada, Mosaic Remover - H.264 + AAC is the safe
+  choice:** opens everywhere, has thumbnails, every tool takes it; the file is bigger. YouTube has no
+  H.264 above 1080p. Whether Lada and Mosaic Remover handle AV1 well is **not checked**.
+  Video Downloader asks for H.264 + AAC first and takes any codec when there is none (2026-10-27).
 
 ## Damaged files
 
