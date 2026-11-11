@@ -18,3 +18,4 @@ not rewritten.
 | [Tests](tests.md) | test first, seen failing; in the same commit; a default, not a law |
 | [How a session starts](session-start.md) | `CLAUDE.md` and `STATUS.md`, no bootstrap |
 | [Rules of code](rules-of-code.md) | an interface for every dependency, named numbers, the rest from both sides |
+| [How Iris gets a tool](tools-by-description.md) | empty at first; a tool comes by its description or from another Iris; Iris gives instructions, the user installs |
