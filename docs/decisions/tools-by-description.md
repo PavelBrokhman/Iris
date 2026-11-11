@@ -4,6 +4,10 @@ Decided 2026-11-11 (Pavel), on the example "I need the hardcoded subtitles of a 
 Kind: **project** - Iris's own way of working; the Gateway's side of it is in AI-Gateway's
 `docs/design/connector-and-engine-hosts.md`.
 
+**Not now.** Recorded to keep the idea in step (Pavel); first PaddleOCR and Whisper become separate
+services like Ollama, installation and the connector side come after. The work: VIDEOTOSRT-183,
+GATEWAY-46, IRIS-94.
+
 ## The way it goes
 
 1. Iris is installed and **empty**: no tools.
