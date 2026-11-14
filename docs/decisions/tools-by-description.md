@@ -18,6 +18,12 @@ GATEWAY-46, IRIS-94.
 5. **A document** (or a link to one) carries what Iris can read: how to install the tool, whether
    it needs AI Gateway, and what exactly it takes from the Gateway - which contracts or which
    version of the Gateway, which parameters it needs, what it passes itself, what it returns.
+   It also says **in which variants the tool installs** - browser or desktop (a UI with its
+   backend) and daemon (the backend alone) - and **how its backend is reached**. Iris can then
+   advise a variant and offer what fits: a UI and the backend reached - it asks "will you do it
+   yourself, or shall I do it for you?"; a UI and the backend not reached - it guides the user
+   through the UI; the backend alone - it does the work itself (Pavel, 2026-11-14;
+   `architecture/spec.md`, Three parts).
 6. **A link to another Iris**: Iris asks the user what is wanted from it -
    - the same installations as that Iris has, or
    - only the tool's installation and the models installed there for it, or
