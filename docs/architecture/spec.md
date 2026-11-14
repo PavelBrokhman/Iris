@@ -13,6 +13,25 @@ the tools.
 | **Backend** | the processing | the tools: Mosaic Remover's backend, VideoToSRT's, ffmpeg and models through AI Gateway |
 | **Agent** | the communication - with the user or with other agents | **Iris** |
 
+**The same split on two levels** (Pavel, 2026-11-14 - said to keep the table above from being read
+as "Iris has no UI and no backend"):
+
+1. **Iris itself** is a UI and a backend. Iris's backend does all of Iris's own work - understands
+   the request, chooses the tool, remembers the user (AI Ecosystem), talks with other agents. Iris's
+   UI is only the shell of the talk and may differ from one installation to another (a window, a
+   web page, a chat); the backend is the same.
+2. **Every tool** is built the same way: a UI and its backend, the UI may differ. A tool installs
+   in variants - **browser or desktop** (a UI with its backend) or **daemon** (the backend alone) -
+   and Iris may advise one. What Iris offers depends on whether there is a UI and **whether Iris
+   reaches the tool's backend** (installed in the same space):
+   - **a UI, and Iris reaches the backend** (the one running under the browser or desktop UI):
+     Iris **asks** - "will you do it yourself, or shall I do it for you?" - and either tells the
+     user what to open and do in the UI, or does the operations itself through the backend;
+   - **a UI, and Iris does not reach the backend**: one way only - Iris tells the user what to open
+     in the UI and what to do there;
+   - **the backend alone, no UI** (daemon): one way only - Iris does the operations itself. Usually
+     the user's choice made beforehand: the tool was installed as a daemon for Iris to work with.
+
 Iris understands the request, chooses the tool and how to call it, calls it - or tells the user
 which window to open and what to press - and explains what came back. The work itself is done by
 the tools. A tool's backend does not know who calls it - its UI, Iris or another agent - and does
