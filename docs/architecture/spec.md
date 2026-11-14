@@ -78,6 +78,9 @@ gather in one list, and that list is the plan of what to build next.
   8 GB card for ordinary cases, a cloud one for hard ones) and for the tools.
 - **AI Ecosystem - the memory**: the tools' schemas, the user's preferences, Iris's notes. Until its
   API exists (`ECOSYSTEM-2`) the notes live in this repository ([knowledge.md](../knowledge.md)).
+  **Exactly one Ecosystem per Iris** (Pavel, 2026-11-13: one incarnation, one Ecosystem; work apart
+  from personal is a second incarnation, not a second Ecosystem for this one). What Iris learns
+  about its user: [design/learning-per-user.md](../design/learning-per-user.md).
 - **Other Iris nodes** - an Iris may pass a request on in its own name and bring the answer back.
 
 A capability has these states, and Iris says which:
