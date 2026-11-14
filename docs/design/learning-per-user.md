@@ -120,6 +120,9 @@ themselves, and the synthetic-history tests.
 
 ## First step, when Pavel decides to start
 
+In Jira: ECOSYSTEM-2 (the minimal API, with facts added beside documents in its comment of
+2026-11-13) blocks IRIS-82 (Iris remembers tools and preferences in the Ecosystem).
+
 The record "a fact about the user" (what, source, time, what it bears on, owner) as Iris's first
 schema in the Ecosystem, with the minimal contract to put and read it and the tests "how Iris uses
 it" in the AI Ecosystem repository (the contract grows from its consumers; the tests are shared, so
