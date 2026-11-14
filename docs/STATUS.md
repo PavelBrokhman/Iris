@@ -1,6 +1,9 @@
 # Status
 
-Last updated: 2026-10-24.
+Last updated: 2026-11-14.
+
+**Next:** the first build of the agent - Python backend, the AI Ecosystem service, a chat in the
+browser - in the order of [decisions/first-build.md](decisions/first-build.md).
 
 What is built and checked, and where the work is. Written when a branch lands. The tasks
 themselves are in Jira; the decisions with their reasons in [decisions/](decisions/README.md).
