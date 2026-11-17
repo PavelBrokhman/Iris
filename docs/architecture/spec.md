@@ -88,7 +88,7 @@ model access AI Gateway's. A request outside it is not attempted.
 
 Inside it, a request no known tool answers: Iris says so plainly and **passes it on to the
 developers** - what was asked, in Pavel's words, and what would have to be added. A named gap beats
-a 404 (*advertise gaps, not just capabilities*, `claude-hub\docs\ecosystem-strategy.md`); the gaps
+a 404 (*advertise gaps, not just capabilities*, `Projects Hub\docs\ecosystem-strategy.md`); the gaps
 gather in one list, and that list is the plan of what to build next.
 
 ## Connections

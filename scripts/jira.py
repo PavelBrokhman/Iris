@@ -1,5 +1,5 @@
 """
-Iris Jira wrapper - thin layer over claude-hub/shared/jira/jira_client.py (Milo's pattern).
+Iris Jira wrapper - thin layer over Projects Hub/shared/jira/jira_client.py (Milo's pattern).
 
 Credentials from Iris's own .env, gitignored (JIRA_PROJECT_KEY, JIRA_EMAIL, JIRA_API_KEY).
 The space is IRIS unless --project names another space of the umbrella
@@ -30,7 +30,7 @@ from dotenv import load_dotenv
 # The shared client reads the environment when it is imported, so the file is loaded first.
 _ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(_ENV_FILE, override=True)
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "claude-hub"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "Projects Hub"))
 
 from shared.jira.jira_client import (  # noqa: E402
     _post as post,

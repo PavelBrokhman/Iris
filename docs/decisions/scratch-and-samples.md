@@ -2,7 +2,7 @@
 
 Decided 2026-10-24 (Pavel).
 
-**Scratch, PoCs and tools** go by Claude Hub's routing (`claude-hub/tmp/<project>/`, `sandbox/`,
+**Scratch, PoCs and tools** go by Claude Hub's routing (`Projects Hub/tmp/<project>/`, `sandbox/`,
 `shared/`), not to the Windows temp folder.
 
 **Why:** a working file in a session's temporary folder is lost with it - Mosaic Remover's

@@ -9,10 +9,10 @@ Until then nothing of the agent was built (`STATUS.md`); the design was in `arch
 
 1. **Iris's backend is written in Python.** It holds no model - every model call goes through AI
    Gateway over HTTP - so the language is not about AI; Python is the language of the Gateway,
-   VideoToSRT and the hub's shared clients. Go was asked about and not taken: a third language with
+   VideoToSRT and Projects Hub's shared clients. Go was asked about and not taken: a third language with
    nothing gained here. C# was the other candidate (Mosaic Remover's).
 2. **AI Ecosystem is the service in its own repository**, `D:\Projects\AI Ecosystem` - already
-   decided in Claude Hub's `docs/decisions/ai-ecosystem-as-a-service.md`: the service owns the code
+   decided in Projects Hub's `docs/decisions/ai-ecosystem-as-a-service.md`: the service owns the code
    that acts on its data, the career data is one registered instance's scope, the storage is the
    service's own choice. Iris's data is one more scope, one per incarnation.
 3. **Iris's first UI is a chat in the browser**, a page served by Iris's backend: nothing to

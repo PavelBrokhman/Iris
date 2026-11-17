@@ -1,7 +1,7 @@
 # The backlog in Jira
 
-Decided 2026-10-24 (Pavel). **The way of working with Jira lives in Claude Hub**,
-`D:\Projects\claude-hub\shared\jira\README.md`: a space per project, epics as themes, subtasks as the parts of a feature
+Decided 2026-10-24 (Pavel). **The way of working with Jira lives in Projects Hub**,
+`D:\Projects\Projects Hub\shared\jira\README.md`: a space per project, epics as themes, subtasks as the parts of a feature
 (not the steps of the process, 2026-10-26), statuses, dependencies, how an item is written, and how the decision came about. It was
 written here first the same day and moved there (commit e18cd8f of the hub), because it holds for
 every project, not only for Iris.

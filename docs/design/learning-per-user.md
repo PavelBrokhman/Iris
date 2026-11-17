@@ -6,7 +6,7 @@ it works, what he is not sure of is *at what moment the foundation is laid*, wit
 
 ## Not training
 
-Nothing here changes a model (`claude-hub/docs/ecosystem-strategy.md` §6: "the instinct is right,
+Nothing here changes a model (`Projects Hub/docs/ecosystem-strategy.md` §6: "the instinct is right,
 the word is not"). One model for everyone; what differs per user is **what reaches the prompt**:
 
 1. Iris takes from AI Ecosystem what it knows about this user and what bears on the question;

@@ -2,7 +2,7 @@
 
 Decided 2026-10-24 (Pavel).
 
-The target is Claude Hub's shape: tools through AI Gateway, data through AI Ecosystem, the UI apart
+The target is Projects Hub's shape: tools through AI Gateway, data through AI Ecosystem, the UI apart
 from the core. Reached piece by piece, never all at once: take one piece (of Mosaic Remover first),
 rebuild it, check it works, then the next. Meanwhile each project keeps working as it is - Mosaic
 Remover with its own ffmpeg. Each project's pieces are its backlog in Jira ([jira.md](jira.md)).

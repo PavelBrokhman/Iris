@@ -13,7 +13,7 @@ themselves are in Jira; the decisions with their reasons in [decisions/](decisio
 Nothing of the agent yet.
 
 - `scripts/jira.py` (`IRIS-7`, 2026-10-24) - Jira from the command line, on Milo's pattern, over
-  Claude Hub's shared client: IRIS by default, `--project` for the other spaces, a subtask always in
+  Projects Hub's shared client: IRIS by default, `--project` for the other spaces, a subtask always in
   its parent's space, `link` for dependencies. Tests in `tests/test_jira.py`; checked live by reading
   issues and moving `IRIS-7`'s own subtasks. Runs in Iris's own `venv` (`requirements.txt`).
 

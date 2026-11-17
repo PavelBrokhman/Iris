@@ -24,7 +24,9 @@ Two things in one place (decided by Pavel, 2026-10-16):
 | Iris | `D:\Projects\Iris\` (here) | https://github.com/PavelBrokhman/Iris | [docs/STATUS.md](docs/STATUS.md) |
 
 Also used by them: AI Gateway (`D:\Projects\AI-Gateway\`, model access) and Claude Hub
-(`D:\Projects\claude-hub\` - Pavel's own notes and preferences).
+(`D:\Projects\claude-hub\` - how Claude Code works with Pavel, his preferences) and Projects Hub
+(`D:\Projects\Projects Hub\` - the shared code such as the Jira client, `sandbox/`, `tmp/`, the
+strategy across the services).
 
 Paths are last-known (2026-10-16); check before relying on them.
 
@@ -58,10 +60,10 @@ Each in one line here; the reason and the history are in its file under
   is named by the kind of work - `feature/`, `userstory/`, `docs/` from `DEV`; `test/`,
   `loadstress/` from `QA`; `release/`, `patch/` from `PROD`. Fast-forward only, `start/` and `end/`
   tags, verify in the child before landing. Commit and push only when Pavel says so.
-- **Direction**, cross ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Claude Hub's
+- **Direction**, cross ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Projects Hub's
   shape - tools through AI Gateway, data through AI Ecosystem, the UI apart from the core - one piece
   at a time, each checked before the next; meanwhile every project keeps working as it is.
-- **Jira**, cross ([jira.md](docs/decisions/jira.md), the rules in Claude Hub's `shared/jira/README.md`):
+- **Jira**, cross ([jira.md](docs/decisions/jira.md), the rules in Projects Hub's `shared/jira/README.md`):
   https://pavlogix.atlassian.net, a space per project, an epic per theme, a story per piece, its
   parts as subtasks, never the steps of the process (Pavel is Scrum Master and Product Owner, 2026-10-26); items impersonal, with instructions, in `JIRA_LANG_LOCALE_USER` when on Pavel, `JIRA_LANG_LOCALE_AGENT` when on the agent; Iris's own
   Jira user is `JIRA_AGENT` (IRISAGENT) - In Review hands an item to Pavel. Both and the credentials in
@@ -71,7 +73,7 @@ Each in one line here; the reason and the history are in its file under
   `docs/STATUS.md` when a branch lands; a decision per file in `docs/decisions/`; `architecture/`,
   `design/`, `guides/`, `archive/` as needed - a folder appears with its first file.
 - **Scratch and samples**, cross ([scratch-and-samples.md](docs/decisions/scratch-and-samples.md)):
-  scratch, PoCs and tools through Claude Hub's `tmp/<project>/`, `sandbox/`, `shared/`, not the
+  scratch, PoCs and tools through Projects Hub's `tmp/<project>/`, `sandbox/`, `shared/`, not the
   Windows temp folder; video samples never in a git - `D:\Projects-Shared\Video\Samples\`, a folder per case.
 - **Tests**, project ([tests.md](docs/decisions/tests.md)): written first and seen failing, committed with
   the code, measuring scripts too. Where that does not fit, the story says beforehand what checks
