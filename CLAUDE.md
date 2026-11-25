@@ -58,7 +58,8 @@ Each in one line here; the reason and the history are in its file under
 
 - **Branches**, cross ([branches.md](docs/decisions/branches.md)): `DEV`, `QA`, `PROD` are teams; a child
   is named by the kind of work - `feature/`, `userstory/`, `docs/` from `DEV`; `test/`,
-  `loadstress/` from `QA`; `release/`, `patch/` from `PROD`. Fast-forward only, `start/` and `end/`
+  `loadstress/` from `QA`; `release/`, `patch/` from `PROD`. Landing into the parent is fast-forward
+  only; the parent comes into the child by a plain merge, not a rebase; `start/` and `end/`
   tags, verify in the child before landing. Commit and push only when Pavel says so.
 - **Direction**, cross ([umbrella-direction.md](docs/decisions/umbrella-direction.md)): towards Projects Hub's
   shape - tools through AI Gateway, data through AI Ecosystem, the UI apart from the core - one piece

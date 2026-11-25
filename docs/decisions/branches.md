@@ -1,17 +1,10 @@
 # Branches
 
-Decided 2026-10-24 (Pavel).
+Decided 2026-10-24 (Pavel); moved to Claude Hub on 2026-11-25.
 
-The permanent branches are teams: `DEV`, `QA`, `PROD`. A child's prefix says what kind of work it
-is: `feature/`, `userstory/`, `docs/` under `DEV`; `test/`, `loadstress/` under `QA`; `release/`,
-`patch/` under `PROD`; the set is open. `master` stays as it is - a passing point, its name does not
-matter.
-
-Only the names changed: the rest of Claude Hub's model (fast-forward, `start/` and `end/` tags,
-verifying in the child before landing) stays until Pavel decides otherwise.
-
-**Why these names:** Pavel had got used to Mosaic Remover's `feature/...`, `qa/...`, `release/...`;
-then `test/` rather than `qa/`, because the prefix names what is done in the branch and the
-permanent branch is only the name of the team.
-
-An open feature branch means the work has started: its stories in Jira are In Progress (Pavel).
+The rule is common to every project and lives in Claude Hub's `docs/conventions.md` (*Git* and
+*Promotion model*): `DEV`, `QA`, `PROD` are teams; a child's prefix says the kind of work
+(`feature/`, `userstory/`, `docs/` from `DEV`; `test/`, `loadstress/` from `QA`; `release/`,
+`patch/` from `PROD`); the parent comes into the child by a plain merge, the child lands into the
+parent fast-forward only; `start/` and `end/` tags; an open feature branch means its stories are In
+Progress. Nothing here differs from it.
